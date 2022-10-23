@@ -1,0 +1,4 @@
+.profile__text {
+  display: grid;
+  row-gap: 16px;
+}

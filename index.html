@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/index.css">
+    <link rel="stylesheet" href="./vendor/normalize.css">
+    <title>Место</title>
+</head>
+<body class="page">
+    <header class="header">
+        <img class="header__logo header__logo_theme_dark" src="./images/logo_theme_dark.png" alt="Место">
+    </header>
+    <main>
+        <section class="profile">
+            <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
+            <div class="profile__info">
+                    <div class="profile__name">
+                        <h1 class="profile__title">Жак-Ив Кусто</h1>
+                        <button class="profile__edit-button" type="button"></button>
+                    </div>
+                    <p class="profile__subtitle">Исследователь океана</p>
+            </div>
+            <button class="profile__add-button" type="button"></button>
+        </section>
+        <section class="cards">
+            <ul class="cards__list">
+                <li class="card">
+                    <figure class="card__figure">
+                        <img class="card__photo" src="./images/image1.jpg" alt="Карачаевск">
+                        <figcaption class="card__caption">
+                            <h2 class="card__text">Карачаевск</h2>
+                            <div class="card__like"></div>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="card">
+                    <figure class="card__figure">
+                        <img class="card__photo" src="./images/image2.jpg" alt="Гора Эльбрус">
+                        <figcaption class="card__caption">
+                            <h2 class="card__text">Гора Эльбрус</h2>
+                            <div class="card__like"></div>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="card">
+                    <figure class="card__figure">
+                        <img class="card__photo" src="./images/image3.jpg" alt="Домбай">
+                        <figcaption class="card__caption">
+                            <h2 class="card__text">Домбай</h2>
+                            <div class="card__like"></div>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="card">
+                    <figure class="card__figure">
+                        <img class="card__photo" src="./images/image2.jpg" alt="Гора Эльбрус">
+                        <figcaption class="card__caption">
+                            <h2 class="card__text">Гора Эльбрус</h2>
+                            <div class="card__like"></div>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="card">
+                    <figure class="card__figure">
+                        <img class="card__photo" src="./images/image3.jpg" alt="Домбай">
+                        <figcaption class="card__caption">
+                            <h2 class="card__text">Домбай</h2>
+                            <div class="card__like"></div>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="card">
+                    <figure class="card__figure">
+                        <img class="card__photo" src="./images/image1.jpg" alt="Карачаево-Чeркессия">
+                        <figcaption class="card__caption">
+                            <h2 class="card__text">Карачаево-Чeркессия</h2>
+                            <div class="card__like"></div>
+                        </figcaption>
+                    </figure>
+                </li>            
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+    </footer>
+    <section class="popup">
+        <div class="popup__container">
+            <h2 class="popup__heading">Редактировать профиль</h2>
+            <form class="popup__form">
+                <input class="popup__field popup__field_input_name" type="text" name="name" placeholder="Имя" required>
+                <input class="popup__field popup__field_input_about" type="text" name="about" placeholder="О себе">
+                <button class="popup__submit-button">Сохранить</button>
+            </form>
+            <button class="popup__close" type="button" name="close"></button>
+        </div>
+    </section>
+    <script src="./scripts/index.js"></script>
+</body>
+</html>
