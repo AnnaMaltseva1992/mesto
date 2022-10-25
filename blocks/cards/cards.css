@@ -5,6 +5,6 @@
 
 @media screen and (max-width: 425px) {
   .cards {
-    padding-bottom: 48px;
+    padding-bottom: 0 19px 48px;
   }
 }

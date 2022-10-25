@@ -5,6 +5,8 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  border: none;
+  background-color: #fff;
 }
 
 .card__like:hover {

@@ -9,11 +9,13 @@ let inputAbout = popupFormElement.querySelector('.popup__field_input_about');
 let popupSubmitButtonElement = document.querySelector('.popup__submit-button');
 
 const openPopup = function() {
-  popupElement.classList.add('popup__is-opened');
+  popupElement.classList.add('popup__opened');
+  inputName.value = profileName.textContent;
+  inputAbout.value = profileAbout.textContent;
 }
 
 const closePopup = function() {
-  popupElement.classList.remove('popup__is-opened');
+  popupElement.classList.remove('popup__opened');
 }
 
 const closePopupByClickOnOverlay = function(event) {
@@ -23,13 +25,6 @@ const closePopupByClickOnOverlay = function(event) {
   closePopup();
 }
 
-profileEditButtonElement.addEventListener('click', openPopup);
-popupCloseButtonElement.addEventListener('click', closePopup);
-
-profileEditButtonElement.addEventListener('click', openPopup);
-popupCloseButtonElement.addEventListener('click', closePopup);
-popupElement.addEventListener('click', closePopupByClickOnOverlay);
-
 let addProfileInfo = function(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
@@ -37,4 +32,9 @@ let addProfileInfo = function(evt) {
   closePopup();
 }
 
-popupFormElement.addEventListener('submit', addProfileInfo);
+profileEditButtonElement.addEventListener('click', openPopup);
+popupCloseButtonElement.addEventListener('click', closePopup);
+
+popupElement.addEventListener('click', closePopupByClickOnOverlay);
+
+popupSubmitButtonElement.addEventListener('click', addProfileInfo);
