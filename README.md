@@ -6,4 +6,4 @@ HTML, CSS, JavaScript, методолгия БЭМ
 ## Планы: 
 функция добавления новых фотографий с помощью JS
 ## Ссылка: 
-https://github.com/AnnaMaltseva1992/mesto/settings/pages
+https://annamaltseva1992.github.io/mesto/index.html

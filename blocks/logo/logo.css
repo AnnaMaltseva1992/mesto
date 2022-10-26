@@ -1,5 +1,6 @@
 .logo {
   max-width: 142px;
+  object-fit: contain;
 }
 
 @media screen and (max-width: 600px) {
