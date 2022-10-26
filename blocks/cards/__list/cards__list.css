@@ -7,3 +7,9 @@
   padding: 0;
   justify-content: center;
 }
+
+@media screen and (max-width: 768px) {
+  .cards__list {
+    row-gap: 18px;
+  }
+}

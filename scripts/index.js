@@ -9,13 +9,13 @@ let inputAbout = popupFormElement.querySelector('.popup__field_input_about');
 let popupSubmitButtonElement = document.querySelector('.popup__submit-button');
 
 const openPopup = function() {
-  popupElement.classList.add('popup__opened');
+  popupElement.classList.add('popup_opened');
   inputName.value = profileName.textContent;
   inputAbout.value = profileAbout.textContent;
 }
 
 const closePopup = function() {
-  popupElement.classList.remove('popup__opened');
+  popupElement.classList.remove('popup_opened');
 }
 
 const closePopupByClickOnOverlay = function(event) {
@@ -37,4 +37,4 @@ popupCloseButtonElement.addEventListener('click', closePopup);
 
 popupElement.addEventListener('click', closePopupByClickOnOverlay);
 
-popupSubmitButtonElement.addEventListener('click', addProfileInfo);
+popupFormElement.addEventListener('submit', addProfileInfo);
