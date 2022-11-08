@@ -1,5 +1,11 @@
 .card__photo {
-  width: 100%;
+  width: 282px;
+  height: 282px;
   margin: 0;
   padding: 0;
+}
+
+.card__photo:hover {
+  cursor: pointer;
+  opacity: .6;
 }
