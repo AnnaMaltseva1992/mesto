@@ -1,21 +1,17 @@
-// popups
 const popupEditElement = document.querySelector('.popup_type_edit');
 const popupNewCardElement = document.querySelector('.popup_type_new-card');
 const popupImageElement = document.querySelector('.popup_type_image');
 let popupPhoto = popupImageElement.querySelector('.popup__image');
 let popupCaption = popupImageElement.querySelector('.popup__caption');
 
-// popups close buttons
 const popupEditCloseButtonElement = popupEditElement.querySelector('.popup__close');
 const popupNewCardCloseButtonElement = popupNewCardElement.querySelector('.popup__close');
 const popupImageCloseButtonElement = popupImageElement.querySelector('.popup__close');
 
-//popups open buttons
 const profileEditButtonElement = document.querySelector('.profile__edit-button');
 const profileAddButtonElement = document.querySelector('.profile__add-button');
 
 const cardsListElement = document.querySelector('.cards__list');
-
 
 let profileName = document.querySelector('.profile__title');
 let profileAbout = document.querySelector('.profile__subtitle');
@@ -26,9 +22,6 @@ let inputAbout = popupFormEditElement.querySelector('.popup__field_input_about')
 let popupSubmitButtonElement = document.querySelector('.popup__submit-button');
 let inputPlace = popupFormNewCardElement.querySelector('.popup__field_input_place');
 let inputLink = popupFormNewCardElement.querySelector('.popup__field_input_link');
-
-
-//arr cards
 
 const initialCards = [
   {
@@ -57,8 +50,6 @@ const initialCards = [
   }
 ]; 
 
-
-//functions
 const openPopup = function(popupElement) {
   popupElement.classList.add('popup_opened');
 }
@@ -157,10 +148,6 @@ initialCards.forEach(function(data) {
   cardsListElement.append(createCard(data));
 });
 
-
-
-
-
 let addProfileInfo = function(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
@@ -168,9 +155,6 @@ let addProfileInfo = function(evt) {
   closePopup(popupEditElement);
 }
 
-
-
-//event listeners
 profileEditButtonElement.addEventListener('click', function() {
   openPopup(popupEditElement);
 });
