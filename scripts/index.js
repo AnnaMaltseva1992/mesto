@@ -60,8 +60,8 @@ const closePopup = function(popupElement) {
 
 const closePopupByCloseButton = function(event) {
   const target = event.target;
-  const currentTarget = target.closest('.popup');
-  currentTarget.classList.remove('popup_opened');
+  const popup = target.closest('.popup');
+  closePopup(popup);
 }
 
 closeButtons.forEach(function(closeButtonElement) {
@@ -69,22 +69,21 @@ closeButtons.forEach(function(closeButtonElement) {
 });
 
 const closePopupByClickOnOverlay = event => {
-  const target = event.target;
   if (event.target !== event.currentTarget) {
     return;
   }
-  closePopup(target);
+  closePopup(event.target);
 }
 
 popups.forEach(function(popupElement) {
   popupElement.addEventListener('click', closePopupByClickOnOverlay);
 });
 
-const handlerLikeClick = (evt) =>  {
+const handleLikeClick = (evt) =>  {
     evt.target.classList.toggle('card__like_active');
 }
 
-const handlerCardDelete = (event) => {
+const handleCardDelete = (event) => {
   const target = event.target;
   const currentCardElement = target.closest('.card');
   currentCardElement.remove();
@@ -104,9 +103,9 @@ const openPopupImage = (event) => {
 
 const setEventListeners = (cardElement) => {
   const deleteButton = cardElement.querySelector('.card__trash');
-  deleteButton.addEventListener('click', handlerCardDelete);
+  deleteButton.addEventListener('click', handleCardDelete);
   const likeButton = cardElement.querySelector('.card__like');
-  likeButton.addEventListener('click', handlerLikeClick);
+  likeButton.addEventListener('click', handleLikeClick);
   const cardPhoto = cardElement.querySelector('.card__photo');
   cardPhoto.addEventListener('click', openPopupImage);
 }
@@ -122,7 +121,7 @@ const createCard = (data) => {
   return cardElement;
 }
 
-const handlerCardFormSubmit = (evt) => {
+const handleCardFormSubmit = (evt) => {
   evt.preventDefault();
   const data = {
     link: inputLink.value,
@@ -138,7 +137,7 @@ initialCards.forEach(function(data) {
   cardsListElement.append(createCard(data));
 });
 
-const handlerProfileFormSubmit = function(evt) {
+const handleProfileFormSubmit = function(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileAbout.textContent = inputAbout.value;
@@ -147,14 +146,14 @@ const handlerProfileFormSubmit = function(evt) {
 
 profileEditButtonElement.addEventListener('click', function() {
   openPopup(popupEditElement);
-  inputName.textContent = profileName.value;
-  inputAbout.textContent = profileAbout.value;
+  inputName.value = profileName.textContent;
+  inputAbout.value = profileAbout.textContent;
 });
 
 profileAddButtonElement.addEventListener('click', function() {
   openPopup(popupNewCardElement);
 });
 
-popupFormEditElement.addEventListener('submit', handlerProfileFormSubmit);
+popupFormEditElement.addEventListener('submit', handleProfileFormSubmit);
 
-popupFormNewCardElement.addEventListener('submit', handlerCardFormSubmit);
+popupFormNewCardElement.addEventListener('submit', handleCardFormSubmit);
