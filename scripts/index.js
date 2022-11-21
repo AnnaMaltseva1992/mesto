@@ -52,17 +52,19 @@ const initialCards = [
 
 const openPopup = function(popupElement) {
   popupElement.classList.add('popup_opened');
+  popupElement.addEventListener('keydown', closePopupByClickOnEsc);
 }
 
 const closePopup = function(popupElement) {
   popupElement.classList.remove('popup_opened');
+  popupElement.removeEventListener('keydown', closePopupByClickOnEsc);
 }
 
-const closePopupByCloseButton = function(event) {
-  const target = event.target;
-  const popup = target.closest('.popup');
-  closePopup(popup);
-}
+const closePopupByCloseButton = function(event) { 
+  const target = event.target; 
+  const popup = target.closest('.popup'); 
+  closePopup(popup); 
+} 
 
 closeButtons.forEach(function(closeButtonElement) {
   closeButtonElement.addEventListener('click', closePopupByCloseButton);
@@ -78,6 +80,16 @@ const closePopupByClickOnOverlay = event => {
 popups.forEach(function(popupElement) {
   popupElement.addEventListener('click', closePopupByClickOnOverlay);
 });
+
+const closePopupByClickOnEsc = (evt) => {
+  const popupOpened = document.querySelector('.popup_opened');
+  if(evt.key === 'Escape') {
+    closePopup(popupOpened);
+  }
+}
+
+document.addEventListener('keydown', closePopupByClickOnEsc);
+document.removeEventListener('keyup', closePopupByClickOnEsc);
 
 const handleLikeClick = (evt) =>  {
     evt.target.classList.toggle('card__like_active');
@@ -157,3 +169,9 @@ profileAddButtonElement.addEventListener('click', function() {
 popupFormEditElement.addEventListener('submit', handleProfileFormSubmit);
 
 popupFormNewCardElement.addEventListener('submit', handleCardFormSubmit);
+
+enableValidation(selectors);
+
+
+
+
