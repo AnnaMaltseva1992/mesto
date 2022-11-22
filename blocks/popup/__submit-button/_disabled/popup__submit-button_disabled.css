@@ -3,3 +3,7 @@
   border-color: rgba(0, 0, 0, .2);
   color: #c4c4c4;
 }
+
+.popup__submit-button_disabled:hover {
+  cursor: default;
+}

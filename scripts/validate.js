@@ -41,10 +41,6 @@ function enableValidation() {
   const formList = Array.from(document.querySelectorAll(selectors.formSelector)); 
 
   formList.forEach((formElement) => {
-  formElement.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-  });
-
     setEventListenersOnForm(formElement);
   }); 
 }
@@ -69,7 +65,7 @@ const selectors = {
   formSelector: '.popup__form',
   inputSelector: '.popup__field',
   submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: '.popup__submit-button_disabled',
+  inactiveButtonClass: 'popup__submit-button_disabled',
   inputErrorClass: '.popup__input-error',
   errorClass: 'popup__input-error_active',
   formSection: '.popup__form-section',
