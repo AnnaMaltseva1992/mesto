@@ -55,8 +55,8 @@ popups.forEach(function(popupElement) {
 });
 
 const closePopupByClickOnEsc = (evt) => {
-  const popupOpened = document.querySelector('.popup_opened');
   if(evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
   }
 }
@@ -118,11 +118,6 @@ const handleCardFormSubmit = (evt) => {
   closePopup(popupNewCardElement);
   evt.target.reset();
   disableSubmitButton(popupSubmitButton, selectors);
-}
-
-const disableSubmitButton = function(buttonElement, selectors) {
-  buttonElement.setAttribute('disabled', true);
-  buttonElement.classList.add(selectors.inactiveButtonClass);
 }
 
 initialCards.forEach(function(data) {

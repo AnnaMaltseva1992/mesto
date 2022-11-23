@@ -29,7 +29,6 @@ const setEventListenersOnForm = (formElement) => {
 };
 
 const checkInputValidity = (inputElement) => {
-  
   if (!inputElement.validity.valid) {
     showInputError(inputElement, inputElement.validationMessage);
   } else {
@@ -48,13 +47,17 @@ function enableValidation() {
 function hasInvalidInput(inputList) {
   return inputList.some((inputElement) => {
   return !inputElement.validity.valid;
-}); 
+  }); 
+}
+
+const disableSubmitButton = function(buttonElement, selectors) {
+  buttonElement.setAttribute('disabled', true);
+  buttonElement.classList.add(selectors.inactiveButtonClass);
 }
 
 function toggleButtonState(inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
-      buttonElement.setAttribute('disabled', true);
-      buttonElement.classList.add('popup__submit-button_disabled');
+    disableSubmitButton(buttonElement, selectors);
   } else {
       buttonElement.removeAttribute('disabled');
       buttonElement.classList.remove('popup__submit-button_disabled');
@@ -71,3 +74,4 @@ const selectors = {
   formSection: '.popup__form-section',
   inputInvalidClass: 'popup__field_invalid'
 }
+
