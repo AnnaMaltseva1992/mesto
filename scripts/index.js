@@ -1,5 +1,6 @@
 import { Card } from './Card.js';
 import { initialCards } from './cards.js';
+import { FormValidator } from './FormValidator.js';
 
 const popups = document.querySelectorAll('.popup');
 const popupEditElement = document.querySelector('.popup_type_edit');
@@ -7,7 +8,6 @@ const popupNewCardElement = document.querySelector('.popup_type_new-card');
 const popupImageElement = document.querySelector('.popup_type_image');
 const popupPhoto = popupImageElement.querySelector('.popup__image');
 const popupCaption = popupImageElement.querySelector('.popup__caption');
-
 
 const popupCloseButtons = document.querySelectorAll('.popup__close');
 
@@ -24,6 +24,17 @@ const inputName = popupFormEditElement.querySelector('.popup__field_input_name')
 const inputAbout = popupFormEditElement.querySelector('.popup__field_input_about');
 const inputPlace = popupFormNewCardElement.querySelector('.popup__field_input_place');
 const inputLink = popupFormNewCardElement.querySelector('.popup__field_input_link');
+
+const selectors = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__field',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+  inputErrorClass: '.popup__input-error',
+  errorClass: 'popup__input-error_active',
+  formSection: '.popup__form-section',
+  inputInvalidClass: 'popup__field_invalid'
+}
 
 const openPopup = function(popupElement) {
   popupElement.classList.add('popup_opened');
@@ -66,7 +77,7 @@ const closePopupByClickOnEsc = (evt) => {
 document.addEventListener('keydown', closePopupByClickOnEsc);
 document.removeEventListener('keyup', closePopupByClickOnEsc);
 
-  const openPopupImage = (data) => {
+const openPopupImage = (data) => {
   popupPhoto.src = data.link;
   popupPhoto.alt = data.name;
   popupCaption.textContent = data.name;
@@ -89,7 +100,6 @@ const handleCardFormSubmit = (evt) => {
   cardElement.cardPhoto.addEventListener('click', () => openPopupImage(cardElement));
 }
 
-
 const handleProfileFormSubmit = function(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
@@ -111,7 +121,11 @@ popupFormEditElement.addEventListener('submit', handleProfileFormSubmit);
 
 popupFormNewCardElement.addEventListener('submit', handleCardFormSubmit);
 
-enableValidation(selectors);
+const formEdit = new FormValidator(selectors, popupFormEditElement);
+formEdit.enableValidation();
+
+const formNewCard = new FormValidator(selectors, popupFormNewCardElement);
+formNewCard.enableValidation();
 
 initialCards.forEach(item => {
   const card = new Card(item);
