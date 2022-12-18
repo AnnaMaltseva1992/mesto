@@ -68,9 +68,9 @@ popups.forEach(function(popupElement) {
 });
 
 const closePopupByClickOnEsc = (evt) => {
+  const popupOpened = document.querySelector('.popup_opened');
   if(evt.key === 'Escape') {
-    const popupOpened = document.querySelector('.popup_opened');
-    closePopup(popupOpened);
+  closePopup(popupOpened);
   }
 }
 
@@ -85,6 +85,13 @@ const openPopupImage = (data) => {
   openPopup(popupImageElement);
 }
 
+initialCards.forEach(item => {
+  const card = new Card(item);
+  const cardElement = card.createCard();
+  cardsListElement.prepend(cardElement);
+  card.cardPhoto.addEventListener('click', () => openPopupImage(card));
+});
+
 const handleCardFormSubmit = (evt) => {
   evt.preventDefault();
   const data = {
@@ -93,11 +100,11 @@ const handleCardFormSubmit = (evt) => {
   }
   const cardElement = new Card(data);
   cardsListElement.prepend(cardElement.createCard());
-  const popupSubmitButton = popupNewCardElement.querySelector('.popup__submit-button');
   closePopup(popupNewCardElement);
   evt.target.reset();
-  disableSubmitButton(popupSubmitButton, selectors);
   cardElement.cardPhoto.addEventListener('click', () => openPopupImage(cardElement));
+
+  formNewCardValidator.disableSubmitButton();
 }
 
 const handleProfileFormSubmit = function(evt) {
@@ -121,15 +128,10 @@ popupFormEditElement.addEventListener('submit', handleProfileFormSubmit);
 
 popupFormNewCardElement.addEventListener('submit', handleCardFormSubmit);
 
-const formEdit = new FormValidator(selectors, popupFormEditElement);
-formEdit.enableValidation();
+const formEditValidator = new FormValidator(selectors, popupFormEditElement);
+formEditValidator.enableValidation();
 
-const formNewCard = new FormValidator(selectors, popupFormNewCardElement);
-formNewCard.enableValidation();
+const formNewCardValidator = new FormValidator(selectors, popupFormNewCardElement);
+formNewCardValidator.enableValidation();
 
-initialCards.forEach(item => {
-  const card = new Card(item);
-  const cardElement = card.createCard();
-  cardsListElement.prepend(cardElement);
-  card.cardPhoto.addEventListener('click', () => openPopupImage(card));
-});
+
