@@ -69,15 +69,15 @@ const userInfo = new UserInfo({ nameSelector: '.profile__title', aboutSelector: 
 const popupWithEditForm = new PopupWithForm('.popup_type_edit', handleProfileFormSubmit);
 popupWithEditForm.setEventListeners();
 
-function handleProfileFormSubmit(data) {
-  userInfo.setUserInfo(data);
+function handleProfileFormSubmit() {
+  userInfo.setUserInfo(inputName, inputAbout);
   popupWithEditForm.close();
 }
 
 profileEditButtonElement.addEventListener('click', function() {
-  const { profileName, profileAbout } = userInfo.getUserInfo();
-  inputName.value = profileName;
-  inputAbout.value = profileAbout;
+  const userData = userInfo.getUserInfo();
+  inputName.value = userData.profileName;
+  inputAbout.value = userData.profileAbout;
   popupWithEditForm.open();
 
   formEditValidator.resetValidation();
