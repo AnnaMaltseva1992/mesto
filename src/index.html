@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
 </head>
 <body class="page">
     <header class="header">
-        <img class="logo logo_place_header" src="./images/logo_theme_dark.png" alt="Место">
+        <img class="logo logo_place_header" src="<%=require('./images/logo_theme_dark.png')%>" alt="Место">
     </header>
     <main>
         <section class="profile">
-            <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
+            <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар">
             <div class="profile__info">
                     <div class="profile__name">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -28,7 +27,7 @@
                 <template class="card-template">
                     <li class="card">
                         <article class="card__figure">
-                          <img class="card__photo" src = "./images/image1.jpg" alt = "Карачаевск">
+                          <img class="card__photo" src="<%=require('./images/image1.jpg')%>" alt = "Карачаевск">
                           <div class="card__caption">
                               <h2 class="card__text"></h2>
                               <button class="card__like" type="button"></button>
@@ -79,11 +78,10 @@
     </section>
     <section class="popup popup_type_image">
         <article class="popup__figure">
-            <img class="popup__image" src="./images/image1.jpg" alt="Карачаевск">
+            <img class="popup__image" src="<%=require('./images/image1.jpg')>" alt="Карачаевск">
             <p class="popup__caption"></p>
             <button class="popup__close" type="button" name="close"></button>
         </article>
     </section>
-    <script src="./pages/index.js" type="module"></script>
 </body>
 </html>
