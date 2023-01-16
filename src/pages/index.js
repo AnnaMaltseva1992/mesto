@@ -11,12 +11,8 @@ import UserInfo from '../components/UserInfo.js';
 import { 
   profileEditButtonElement,
   profileAddButtonElement, 
-  popupFormEditElement, 
-  inputName,
-  inputAbout, 
+  popupFormEditElement,  
   popupFormNewCardElement, 
-  inputPlace,
-  inputLink,
   selectors
 } from '../utils/constants.js';
 
@@ -41,40 +37,24 @@ function handleCardClick(name, link) {
   popupWithImage.open(name, link);
 }
 
-function handleCardFormSubmit() {
-    renderCard({
-      link: inputLink.value,
-      name: inputPlace.value
-    });
-
-  popupWithAddForm.close();
-
-  formNewCardValidator.disableSubmitButton();
-}
-
 const popupWithImage = new PopupWithImage('.popup_type_image');
 popupWithImage.setEventListeners();
 
 const userInfo = new UserInfo({ nameSelector: '.profile__title', aboutSelector: '.profile__subtitle' });
 
-const popupWithEditForm = new PopupWithForm('.popup_type_edit', handleProfileFormSubmit);
+const popupWithEditForm = new PopupWithForm('.popup_type_edit', userInfo.setUserInfo);
 popupWithEditForm.setEventListeners();
 
-function handleProfileFormSubmit() {
-  userInfo.setUserInfo(inputName, inputAbout);
-  popupWithEditForm.close();
-}
 
-profileEditButtonElement.addEventListener('click', function() {
-  const userData = userInfo.getUserInfo();
-  inputName.value = userData.profileName;
-  inputAbout.value = userData.profileAbout;
+profileEditButtonElement.addEventListener('click', () => {
   popupWithEditForm.open();
-
+  const userData = userInfo.getUserInfo();
+  popupWithEditForm.setInputValues(userData);
+  
   formEditValidator.resetValidation();
-});
+})
 
-const popupWithAddForm = new PopupWithForm('.popup_type_new-card', handleCardFormSubmit);
+const popupWithAddForm = new PopupWithForm('.popup_type_new-card', (data) => renderCard({ name: data.place, link: data.link }));
 popupWithAddForm.setEventListeners();
 
 profileAddButtonElement.addEventListener('click', function() {
