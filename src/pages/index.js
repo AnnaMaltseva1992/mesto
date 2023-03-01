@@ -1,4 +1,4 @@
-import '../utils/index.css';
+import '../pages/index.css';
 
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
@@ -124,6 +124,8 @@ const popupWithEditForm = new PopupWithForm('.popup_type_edit', (items) => {
     .editProfile(items)
     .then((item) => {
       userInfo.setUserInfo(item);
+      popupWithEditForm.close();
+
     })
     .catch((err) => console.log(`Ошибка редактирования профиля: ${err}`))
     .finally(() => popupWithEditForm.renderLoading(false))
@@ -148,6 +150,7 @@ function handleAddFormSubmit(items) {
     .addNewCard(items)
     .then((res) => {
       renderCard(res);
+      popupWithAddForm.close();
     })
     
     .catch((err) => console.log(`Произошла ошибка ${err}`))
